@@ -1,0 +1,54 @@
+5 Starting ships begin right on the board, lined up in top left corner.
+
+at start of game, before starting, user can move ships into other positions,
+decide how users can move ships.  dragula for drag-and-drop?
+
+ships can only be successfully moved if:
+  - ships are entirely on the board
+  - ships do not overlap
+
+if moved, ships' start and end coordinates are updated, and coordinate of each spot is updated.
+
+when player has decided they are finished moving their  ships, they click a ready_button that toggles a ready_state = false to  ready_state = true.
+The ready_button is visibility: hidden, and pointer-event: none;.
+
+when player ready state = true, the game starts.
+
+
+player/PC take turns firing 1 shot with  X & Y  coordinates. based on click.
+
+player cannot click on same place twice.
+each button on the grid will have a state of clicked?  that is only clickable once.
+Remove event listener once clicked on.
+
+Each button has following color states:
+
+top board (your target map):
+
+- plain state
+- successful hit state
+- missed fire state
+
+bottom board (your ships):
+
+- plain state
+- your ship state
+- successful hit state
+- enemy missed fire state
+
+Color changes on click from plain to which ever proper state which is verified.
+
+
+Player and PC both have a starting variable of num_sunken_ships = 0;
+after every hit, a ship checks if it is sunk (none?(spot.hit = false?)).
+Whenever a ship is sunk,  num_sunken_ships++;
+
+if (num_sunken_ships >= 5) {
+  the other player wins.
+}
+
+
+new game resets:
+-ready_state = false;
+-ready_button returned to visibility: visibile;.
+-re-creates the starting 5 ships at their original locations with all hit states back to false
